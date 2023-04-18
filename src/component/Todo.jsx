@@ -4,7 +4,7 @@ import {TiEdit} from 'react-icons/ti'
 import TodoForm from './TodoForm'
 
 
-function Todo({todos , completeTodo , removeTodo , updateTodo }) {
+function Todo({todo,index,completeTodo , removeTodo , updateTodo }) {
     const [edit , setEdit] = useState({
         id:null,
         value : '',
@@ -22,7 +22,7 @@ if(edit.id){
     return <TodoForm edit={edit} onSubmit={submitUpdate}/>
 }
 
-    return todos.map((todo,index) => (
+    return (
         <div 
         className={todo.iscomplete ? 'todo-row complete' : 'todo-row'}
         key={index}
@@ -39,7 +39,7 @@ if(edit.id){
                 className='edit-icon'/>
             </div>
         </div>
-    ))
+    )
 }
 
 export default Todo

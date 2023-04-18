@@ -1,12 +1,11 @@
-import React, { useContext, useState } from 'react'
-import TodoForm from './TodoForm'
+import React, { useContext } from 'react'
+
 import Todo from './Todo'
 import { context } from '../App'
 import { useNavigate } from "react-router-dom";
 
 function TodoList() {
-  
-    const {todos,setTodos}=useContext(context);
+    const { todos, setTodos } = useContext(context);
     const navigate = useNavigate();
 
     const completeTodo = id => {
@@ -32,23 +31,27 @@ function TodoList() {
     }
 
 
-    return (
-        <div className='todo-app'>
-            <h1>Todo List</h1>
-            
-            <Todo
-                completeTodo={completeTodo}
-                todos={todos}
-                removeTodo={removeTodo}
-                updateTodo={updateTodo} />
-                <button
-                className="todo-button tt" 
-                onClick={() => navigate("/form")}>
-                Go to form
-            </button>
-        </div>
-        
-    )
+    return <div className='todo-app'>
+        <h1>Todo List</h1>
+        {todos.map((todo,index) => (
+        <Todo
+            completeTodo={completeTodo}
+            todo={todo}
+            removeTodo={removeTodo}
+            updateTodo={updateTodo}
+            index={index}
+        />
+        ))}
+        <button
+            className="todo-button tt"
+            onClick={() => navigate("/form")}>
+            Go to form
+        </button>
+    </div>
+    
+
+
+
 }
 
 export default TodoList
