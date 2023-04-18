@@ -25,6 +25,11 @@ body {
   border-radius: 10px;
   padding-bottom: 32px;
 }
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 h1 {
   margin: 32px 0;
@@ -39,6 +44,7 @@ h1 {
 
 .todo-form {
   margin-bottom: 32px;
+
 }
 
 .todo-input {
@@ -68,6 +74,12 @@ h1 {
   );
   color: #fff;
   text-transform: capitalize;
+}
+.tt{
+  margin-top: 400px;
+}
+.yy{
+  margin-right:  auto;
 }
 
 .todo-input.edit {

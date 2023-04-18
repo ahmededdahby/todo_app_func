@@ -1,18 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import TodoForm from './TodoForm'
 import Todo from './Todo'
+import { context } from '../App'
+import { useNavigate } from "react-router-dom";
 
 function TodoList() {
-    const [todos, setTodos] = useState([]);
-
-    const addtodos = todo => {
-        if (!todo.text || /^\s*$/.test(todo.text)) {
-            return;
-        }
-        const newTodo = [todo, ...todos]
-        setTodos(newTodo)
-        console.log(todo)
-    }
+  
+    const {todos,setTodos}=useContext(context);
+    const navigate = useNavigate();
 
     const completeTodo = id => {
         let newtodos = todos.map(todo => {
@@ -40,13 +35,19 @@ function TodoList() {
     return (
         <div className='todo-app'>
             <h1>Todo List</h1>
-            <TodoForm onSubmit={addtodos} />
+            
             <Todo
                 completeTodo={completeTodo}
                 todos={todos}
                 removeTodo={removeTodo}
                 updateTodo={updateTodo} />
+                <button
+                className="todo-button tt" 
+                onClick={() => navigate("/form")}>
+                Go to form
+            </button>
         </div>
+        
     )
 }
 
