@@ -2,10 +2,10 @@
 import React, { useContext, useState   } from 'react'
 import { useDispatch, useSelector } from "react-redux"
 import {  postData } from "./../Redux/Action"
-import DataContext from '../context/DataContext';
+import { context } from '../App';
 
 function Set(props) {
-    const { add } = useContext(DataContext);
+    const { add } = useContext(context);
     const [input,setInput] = useState("")
 
 const handleChange =(event) => {

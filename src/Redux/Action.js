@@ -34,3 +34,20 @@ export const postData = (input) => async (dispatch)=>{
         });
     }
 }
+export const deleteData = (id) => async (dispatch)=>{
+    try{
+        dispatch({type: "DELETE_TODO_REQUEST"});
+        await axios.delete(`http://localhost:3000/data/${id}`);
+        dispatch({type: "DELETE_TODO_SUCCESS",playload: id});
+   
+
+    }catch(e){
+        dispatch({
+            type: "DELETE_TODO_ERROR",
+            playload: 
+                e.response && e.response.data.message
+                ? e.response.data.message
+                : e.message,
+        });
+    }
+}

@@ -42,3 +42,25 @@ export const POST_TODO=(state = {data : []},Action)=>{
     }
 
 }
+export const DELETE_TODO=(state = {data : []},Action)=>{
+    
+    switch(Action.type) {
+        case "DELETE_TODO_REQUEST":
+            return {
+                ...state,
+                
+            };
+        case "DELETE_TODO_SUCCESS":
+            console.log(Action.playload)
+            return { data:[...state.data.filter(item=> item.id !== Action.playload)]  };
+            
+        case "DELETE_TODO_ERROR" :
+            console.log("hdhdh");
+            return { error: Action.playload };
+        default:
+            
+            return state;
+
+    }
+
+}
